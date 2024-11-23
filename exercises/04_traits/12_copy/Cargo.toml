@@ -2,3 +2,5 @@
 name = "copy"
 version = "0.1.0"
 edition = "2021"
+[dependencies]
+derive_more = "0.99"
