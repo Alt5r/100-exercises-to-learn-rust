@@ -8,3 +8,37 @@
 //   It should be possible to print its debug representation.
 //
 // Tests are located in the `tests` folder—pay attention to the visibility of your types and methods.
+
+use std::ops::Add;
+pub struct SaturatingU16 { 
+    value:u16
+}
+
+impl From<u16> for SaturatingU16 {
+    fn from(val:u16) -> Self {
+        SaturatingU16 {value:val}
+    }
+}
+impl From<u8> for SaturatingU16 {
+    fn from(val:u8) -> Self {
+        SaturatingU16 {value:val}
+    }
+}
+impl From<&u16> for SaturatingU16 {
+    fn from(val:&u16) -> Self {
+        SaturatingU16 {value:val}
+    }
+}
+impl From<&u8> for SaturatingU16 {
+    fn from(val:&u8) -> Self {
+        SaturatingU16 {value:val}
+    }
+}
+impl Add for SaturatingU16 {
+
+    type Output = SaturatingU16;
+    
+    fn add(self, rhs:SaturatingU16) -> SaturatingU16 {
+        SaturatingU16 { value:self.value.saturating_add(rhs.value) }
+    }
+}
